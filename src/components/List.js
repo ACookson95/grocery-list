@@ -1,25 +1,19 @@
 import React from 'react';
+import Item from './Item';
 
-const List = ({items}) => (
-  <div>
 
-    <h1>Grocery List</h1>
-    <table>
-      <th>
-        <td>Item</td>
-        <td>Quantity</td>
-        <td>Price</td>
-        <td>Total Price</td>
-      </th>
-      {items.map(i =>  ( 
-      <tr>
-          <td>{i.brand} {i.itemName}</td>
-          <td>{i.quantity}</td>
-          <td>${i.price}</td>
-          <td>${i.price * i.quantity}</td>
-      </tr>
-      ))}
-    </table>
+const List = ({items, cartTotal, handleComplete, removeGroceryItem, updatedItem}) => (
+  <div class="ui segment">
+
+    <h1 class="ui dividing header">Grocery List</h1>
+
+      <Item 
+        items={items} 
+        handleComplete={handleComplete} 
+        removeGroceryItem={removeGroceryItem} 
+        cartTotal={cartTotal}
+        />
+
   </div>
 
   )
