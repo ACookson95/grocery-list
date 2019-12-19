@@ -7,10 +7,6 @@ class Item extends Component {
     edit: false
   }
 
-  handleEdit = (e) => {
-    e.preventDefault()
-  }
-
   toggleEdit = () => {
     this.setState({edit: !this.state.edit})
   }
@@ -19,18 +15,18 @@ class Item extends Component {
     const styles = {
       complete: {
         color: 'grey',
-        textDecoration: 'line-through'
+        textDecoration: 'line-through',
       }
     }
     
     const { items, handleComplete, removeGroceryItem, cartTotal} = this.props
     
     return(
-      <form onSubmit={this.handleEdit} class="ui form">
+      <form onSubmit={this.handleEdit} className="ui form">
       <h3>
-        {this.state.edit ? <button class="ui primary button" type="submit" onClick= {() => this.toggleEdit()}>Save</button> : <button class="ui button" onClick= {() => this.toggleEdit()}>Edit</button>}
+        {this.state.edit ? <button className="ui primary button" type="submit" onClick= {() => this.toggleEdit()}>Save</button> : <button className="ui button" onClick= {() => this.toggleEdit()}>Edit</button>}
       </h3>
-      <table class="ui celled striped table">
+      <table className="ui celled striped table centered">
 
         <tr>
           <th></th>
@@ -42,38 +38,34 @@ class Item extends Component {
         </tr>
 
         {items.map(i =>  ( 
-        <tr>
+        <tr key={i.id}>
 
           <td>
-            <button class="ui red button" onClick= {() => removeGroceryItem(i.id)}>Delete</button>
+            <button className="ui red button" onClick= {() => removeGroceryItem(i.id)}>Delete</button>
           </td>
         
           <td 
             onClick={() => handleComplete(i.id)} 
-            style={(i.inCart ? { ...styles.complete, textDecoration:'none !important'} : {}) }>
-            {i.inCart ? "☑" : "☐"}
+            style={(i.inCart ? { ...styles.complete, textDecoration:'none !important', cursor:'pointer'} : {cursor: 'pointer'}) }>
+            <h1>{i.inCart ? "☑" : "☐"}</h1>
           </td>
 
           <td 
-            onClick={() => handleComplete(i.id)} 
             style={(i.inCart ? { ...styles.complete } : {}) }>
-            {this.state.edit ? <div class="two field"><input name="brand" defaultValue={i.brand} onChange={this.handleChange}/><input name="itemName" defaultValue={i.itemName}/></div> : `${i.brand} ${i.itemName}` }
+            {this.state.edit ? <div><input name="brand" defaultValue={i.brand} onChange={this.handleChange}/><input name="itemName" defaultValue={i.itemName}/></div> : `${i.brand} ${i.itemName}` }
           </td>
 
           <td 
-            onClick={() => handleComplete(i.id)} 
             style={(i.inCart ? { ...styles.complete } : {}) }>
             {this.state.edit ? <input name="quantity" defaultValue={i.quantity}/> : i.quantity }
           </td>
 
           <td 
-            onClick={() => handleComplete(i.id)} 
             style={(i.inCart ? { ...styles.complete } : {}) }>
             {this.state.edit ? <input name="price" defaultValue={`$${i.price}`}/> : `$${i.price}` }
           </td>
 
           <td 
-            onClick={() => handleComplete(i.id)} 
             style={(i.inCart ? { ...styles.complete } : {}) }>
             ${i.price * i.quantity}
           </td>

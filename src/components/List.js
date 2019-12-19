@@ -3,9 +3,9 @@ import Item from './Item';
 
 
 const List = ({items, cartTotal, handleComplete, removeGroceryItem, updatedItem}) => (
-  <div class="ui segment">
+  <div className="ui segment">
 
-    <h1 class="ui dividing header">Grocery List</h1>
+    <h1 className="ui dividing header">Grocery List</h1>
 
       <Item 
         items={items} 
