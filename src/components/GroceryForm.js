@@ -16,12 +16,12 @@ class GroceryForm extends Component {
 
   render(){
     return(
-      <div class="ui segment">
-        <form onSubmit={this.handleSubmit} class="ui form"> 
+      <div className="ui segment">
+        <form onSubmit={this.handleSubmit} className="ui form"> 
 
-          <h3 class="ui dividing header">Add Grocery Items</h3>
-          <div class="four fields">
-            <div class="field">
+          <h3 className="ui dividing header">Add Grocery Items</h3>
+          <div className="four fields">
+            <div className="field">
               <input
               value={this.state.itemName}
               name="itemName"
@@ -31,7 +31,7 @@ class GroceryForm extends Component {
               />
             </div>
 
-            <div class="field">
+            <div className="field">
               <input
               value={this.state.brand}
               name="brand"
@@ -40,7 +40,7 @@ class GroceryForm extends Component {
               />
             </div>
 
-            <div class="field">
+            <div className="field">
               <input
               value={this.state.quantity}
               name="quantity"
@@ -51,7 +51,7 @@ class GroceryForm extends Component {
               />
             </div>
 
-            <div class="field">
+            <div className="field">
               <input
               value={this.state.price}
               name="price"
@@ -63,7 +63,7 @@ class GroceryForm extends Component {
             </div>
           </div>
 
-            <input type="submit" class="ui submit button"/>
+            <input type="submit" className="ui submit button"/>
         </form>
       </div>
     )
